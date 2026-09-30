@@ -1,20 +1,30 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>
-      Blank
-    </ion-title>
+    <ion-title class="ion-text-center ion-title-bold"> Mis tareas</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
-    </ion-toolbar>
-  </ion-header>
+  <!-- IonItem: Almacenar diferentes elementos:
+     Imagenes, Inputs, Botones o Formularios
+  -->
+  <ion-item>
+    <!-- IonInput: Por defecto es de tipo text.
+       Recomendación: Siempre indicar el name -->
+    <ion-input type="text" 
+    placeholder="Nueva Tarea" 
+    name="task" 
+    />
 
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
-  </div>
+    <ion-button (click) = "addTask()" [disabled]="!task">
+      <ion-icon name="add-outline"></ion-icon>
+    </ion-button>
+  </ion-item>
+
+  @for (task of tasks; track task) {
+    <ion-item>
+      <ion-label>{{task}}</ion-label>
+    </ion-item>
+  }
+
 </ion-content>
